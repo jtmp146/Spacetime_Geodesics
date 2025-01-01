@@ -8,7 +8,7 @@ show_frames = False
 start = 0
 length = 1000
 mark_origin = True
-mark_horizon = True
+mark_horizon = False
 source = "trajectory.txt"
 
 with open(source) as data:
@@ -50,6 +50,11 @@ def update(num):
         if num > 0:
             path = [points[i] for points in point_hist[:frame+1]]
             ax.plot([pos[0] for pos in path], [pos[1] for pos in path], [pos[2] for pos in path])
+
+        ax.set_xlabel("x")
+        ax.set_ylabel("y")
+        ax.set_zlabel("z")
+        ax.set_title(f"Geodesic trajectory of particle in spacetime")
 
     if fix_axes:
         ax.set_xlim(-fig_size, fig_size)
